@@ -1,11 +1,15 @@
 
-const { I, _constants, registerPage } = inject()
+const { I, _constants, registerPage, signinPage } = inject()
 
 module.exports = {
 
   openPage () {
     I.amOnPage('https://gitlab.com/users/sign_in')
     this.loginPageIsOpen()
+  },
+
+  openPage_ () {
+    I.amOnPage('https://gitlab.com/users/sign_in')
   },
 
   loginFieldIsOpen () {
@@ -66,6 +70,7 @@ module.exports = {
     this.sendLogin(login)
     this.sendPassword(password)
     this.clickSignInButton()
+    signinPage.pageIsOpen()
   },
 
   loginIsIncorrect () {
@@ -100,6 +105,10 @@ module.exports = {
 
   clickSignInButton () {
     I.click(this.signInButton)
+  },
+
+  clickRememberMe () {
+    I.click(this.rememberMeCheckbox)
   },
 
   userLoginLabel: { xpath: "//*[@for='user_login']" },

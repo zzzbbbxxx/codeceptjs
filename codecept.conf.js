@@ -10,7 +10,7 @@ exports.config = {
   multiple: {
     parallel: {
       chunks: 2,
-      browsers: ['chrome']
+      browsers: ['puppeteer']
     }
   },
   helpers: {
@@ -33,7 +33,8 @@ exports.config = {
     registerPage: './pages/register.js',
     signinPage: './pages/signin.js',
     wikiPage: './pages/wiki.js',
-    _constants: './.idea/global_const.js'
+    _constants: './global_const.js',
+    cookieMethods: './cookieMethods.js'
   },
   bootstrap: null,
   mocha: {},

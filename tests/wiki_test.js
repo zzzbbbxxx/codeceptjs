@@ -1,18 +1,11 @@
 Feature('signin.js')
-const { loginPage, I, _constants, signinPage, wikiPage } = inject()
-
-async function saveCookie () {
-  const cookies = await I.grabCookie('_gitlab_session')
-  const fs = require('fs').promises
-  await fs.writeFile('./cookies.json', JSON.stringify(cookies, null, 2))
-}
+const { loginPage, _constants, wikiPage, cookieMethods } = inject()
 
 Before(async () => { // or Background
   loginPage.openPage()
   loginPage.sendForm(_constants.LOGIN, _constants.PASSWORD)
-  signinPage.pageIsOpen()
-  await saveCookie()
-  I.clearCookie()
+  await cookieMethods.saveCookie('_gitlab_session')
+  cookieMethods.resetBrowser()
 })
 
 Scenario('open wikipage', async () => {

@@ -20,6 +20,6 @@ module.exports = {
 
   signOutButton: { xpath: "//*[contains(text(),'Sign out')]" },
   avatar: { xpath: "//*[contains(@class,'header-user-avatar')]" },
-  navigationBar: { xpath: "    //*[@data-qa-selector='navbar']" }
+  navigationBar: { xpath: "//*[@data-qa-selector='navbar']" }
 
 }

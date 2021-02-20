@@ -1,24 +1,16 @@
-const { I, _constants } = inject()
+const { I, _constants, cookieMethods } = inject()
 //
-
-async function readCookie () {
-  const fs = require('fs').promises
-  const cookiesString = await fs.readFile('cookies.json', 'utf8', function (err, data) {
-    if (err) throw err
-    console.log(data.toString())
-  })
-  const cookies = await JSON.parse(cookiesString)
-  return cookies.value
-}
+const wikiURL = 'https://gitlab.com/temp_login/tmp_project/-/wikis/home'
 
 module.exports = {
 
   async openPage () {
-    I.amOnPage()
-    const cookieValue = await readCookie()
-    I.setCookie({ name: '_gitlab_session', domain: 'gitlab.com', value: cookieValue })
-    I.amOnPage('https://gitlab.com/temp_login/tmp_project/-/wikis/home')
-    I.waitForElement({ xpath: "//*[@title='Create your first page']" }, _constants.WAITTIME)
-  }
+    I.setCookie(
+      { name: '_gitlab_session', domain: 'gitlab.com', value: await cookieMethods.readCookie() })
+    I.amOnPage(wikiURL)
+    I.waitForElement(this.createButton, _constants.WAITTIME)
+  },
+
+  createButton: { xpath: "//*[@title='Create your first page']" }
 
 }
