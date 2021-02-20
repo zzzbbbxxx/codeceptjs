@@ -1,5 +1,5 @@
 Feature('signin.js')
-const { loginPage, I, signinPage, _constants } = inject()
+const { loginPage, I, signinPage, _constants, signSteps } = inject()
 
 Before(() => { // or Background
   loginPage.openPage()
@@ -10,47 +10,38 @@ After(() => { // or Background
 })
 
 Scenario('sign with correct login/password', () => {
-  loginPage.sendForm(_constants.LOGIN, _constants.PASSWORD)
-  signinPage.pageIsOpen()
+  signSteps.signInWith(_constants.LOGIN, _constants.PASSWORD)
 })
 
 Scenario('sign with correct email/password', () => {
-  loginPage.sendForm(_constants.EMAIL, _constants.PASSWORD)
-  signinPage.pageIsOpen()
+  signSteps.signInWith(_constants.EMAIL, _constants.PASSWORD)
 })
 
 Scenario('logout', () => {
-  loginPage.sendForm(_constants.EMAIL, _constants.PASSWORD)
-  signinPage.pageIsOpen()
+  signSteps.signInWith(_constants.EMAIL, _constants.PASSWORD)
   signinPage.logOut()
 })
 
 Scenario('sign with correct upcase login', () => {
-  loginPage.sendForm(_constants.UPCASE_LOGIN, _constants.PASSWORD)
-  signinPage.pageIsOpen()
+  signSteps.signInWith(_constants.UPCASE_LOGIN, _constants.PASSWORD)
 })
 
 Scenario('sign with correct camelCase email', () => {
-  loginPage.sendForm(_constants.CAMELCASE_LOGIN, _constants.PASSWORD)
-  signinPage.pageIsOpen()
+  signSteps.signInWith(_constants.CAMELCASE_LOGIN, _constants.PASSWORD)
 })
 
 Scenario('sign with incorrect password with login', () => {
-  loginPage.sendForm(_constants.LOGIN, _constants.WRONG_STRING)
-  loginPage.loginIsIncorrect()
+  signSteps.notLoggedInWith(_constants.LOGIN, _constants.WRONG_STRING)
 })
 
 Scenario('sign with incorrect password with email', () => {
-  loginPage.sendForm(_constants.EMAIL, _constants.WRONG_STRING)
-  loginPage.loginIsIncorrect()
+  signSteps.notLoggedInWith(_constants.EMAIL, _constants.WRONG_STRING)
 })
 
 Scenario('sign with incorrect login', () => {
-  loginPage.sendForm(_constants.WRONG_LOGIN, _constants.WRONG_STRING)
-  loginPage.loginIsIncorrect()
+  signSteps.notLoggedInWith(_constants.WRONG_LOGIN, _constants.WRONG_STRING)
 })
 
 Scenario('sign with incorrect email', () => {
-  loginPage.sendForm(_constants.WRONG_EMAIL, _constants.WRONG_STRING)
-  loginPage.loginIsIncorrect()
+  signSteps.notLoggedInWith(_constants.WRONG_EMAIL, _constants.WRONG_STRING)
 })

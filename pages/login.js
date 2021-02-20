@@ -1,15 +1,17 @@
 
-const { I, _constants, registerPage, signinPage } = inject()
+const { I, _constants, registerPage } = inject()
+
+const url = 'https://gitlab.com/users/sign_in'
 
 module.exports = {
 
   openPage () {
-    I.amOnPage('https://gitlab.com/users/sign_in')
+    I.amOnPage(url)
     this.loginPageIsOpen()
   },
 
-  openPage_ () {
-    I.amOnPage('https://gitlab.com/users/sign_in')
+  refreshPage () {
+    I.amOnPage(url)
   },
 
   loginFieldIsOpen () {
@@ -70,7 +72,6 @@ module.exports = {
     this.sendLogin(login)
     this.sendPassword(password)
     this.clickSignInButton()
-    signinPage.pageIsOpen()
   },
 
   loginIsIncorrect () {

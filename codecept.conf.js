@@ -34,7 +34,8 @@ exports.config = {
     signinPage: './pages/signin.js',
     wikiPage: './pages/wiki.js',
     _constants: './global_const.js',
-    cookieMethods: './cookieMethods.js'
+    customMethods: './customMethods.js',
+    signSteps: './steps/signin_steps'
   },
   bootstrap: null,
   mocha: {},

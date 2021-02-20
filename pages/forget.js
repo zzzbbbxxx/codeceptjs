@@ -23,5 +23,4 @@ module.exports = {
   userEmailInput: { xpath: "//*[@id='user_email']" },
   resetPasswordButton: { xpath: "//input[@type='submit' and @value='Reset password']" },
   signInButton: { xpath: "//*[contains(text(),'Sign in')]" }
-  // insert your locators and methods here
 }

@@ -11,6 +11,9 @@
         "codeceptjs:demo:ui": "codecept-ui --app  -c node_modules/@codeceptjs/examples"
     },
     "devDependencies": {
+        "@babel/cli": "^7.12.17",
+        "@babel/core": "^7.12.17",
+        "@babel/preset-env": "^7.12.17",
         "@codeceptjs/configure": "^0.6.2",
         "@codeceptjs/examples": "^1.2.1",
         "@codeceptjs/ui": "^0.4.3",

@@ -2,17 +2,17 @@ const { I, _constants, loginPage } = inject()
 //
 module.exports = {
 
-  pageIsOpen () {
+  signedIn () {
     I.waitForElement(this.navigationBar, _constants.WAITTIME)
   },
 
   logOut () {
-    this.clickOnAvatar()
+    this.openUserMenu()
     I.click(this.signOutButton)
-    loginPage.pageIsOpen()
+    loginPage.loginPageIsOpen()
   },
 
-  clickOnAvatar () {
+  openUserMenu () {
     I.waitForElement(this.avatar)
     I.click(this.avatar)
     I.waitForElement(this.signOutButton, _constants.WAITTIME)
